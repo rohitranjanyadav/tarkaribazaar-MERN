@@ -13,13 +13,14 @@ import MyOrder from "./pages/MyOrder";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin");
   return (
     <>
       <Toaster />
-      <div>
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-24">
         {!adminPath && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/add-address" element={<AddAddress />} />
           <Route path="/my-orders" element={<MyOrder />} />
         </Routes>
+        {!adminPath && <Footer />}
       </div>
     </>
   );
