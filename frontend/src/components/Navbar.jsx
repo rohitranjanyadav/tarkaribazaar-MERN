@@ -5,7 +5,7 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { AppContext } from "../context/AppContext.jsx";
 import toast from "react-hot-toast";
 const Navbar = () => {
-  const { navigate, user, setUser } = useContext(AppContext);
+  const { navigate, user, setUser, cart, favorite } = useContext(AppContext);
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -41,16 +41,22 @@ const Navbar = () => {
           Contact
         </Link>
 
-        <div className="relative cursor-pointer">
+        <div
+          onClick={() => navigate("/cart")}
+          className="relative cursor-pointer"
+        >
           <ShoppingBag className="w-5 h-5" />
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
-            3
+            {cart ? cart.length : 0}
           </button>
         </div>
-        <div className="relative cursor-pointer">
+        <div
+          onClick={() => navigate("/wishlist")}
+          className="relative cursor-pointer"
+        >
           <Heart className="w-5 h-5" />
           <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
-            1
+            {favorite ? favorite.length : 0}
           </button>
         </div>
 

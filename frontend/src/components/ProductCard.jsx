@@ -1,16 +1,20 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { navigate, currency } = useContext(AppContext);
+  const { navigate, currency, addToCart } = useContext(AppContext);
   return (
     <div className="w-[250px] h-[350px] rounded-xl bg-[#FAFAFA] p-[20px] hover:border hover:border-secondary hover:transform hover:scale-105 transition-all ease-in-out duration-300">
       <p>{product.weight}</p>
-      <div className="cursor-pointer">
+      <Link to={`/product/${product._id}`} className="cursor-pointer">
         <img src={product.images[0]} alt="" />
-      </div>
-      <button className="flex items-center justify-center mb-3 w-full py-1 bg-secondary text-white cursor-pointer">
+      </Link>
+      <button
+        onClick={() => addToCart(product)}
+        className="flex items-center justify-center mb-3 w-full py-1 bg-secondary text-white cursor-pointer"
+      >
         <ShoppingCart />
       </button>
       <hr className="w-full" />
