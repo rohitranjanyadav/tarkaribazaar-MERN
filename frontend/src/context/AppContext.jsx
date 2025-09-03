@@ -7,6 +7,8 @@ const currency = import.meta.env.VITE_CURRENCY;
 const AppContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [categoriesData, setCategoriesData] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [blogsData, setBlogsData] = useState([]);
@@ -104,6 +106,10 @@ const AppContextProvider = ({ children }) => {
     addToFavorite,
     removeFromFavorite,
     getCartTotal,
+    admin,
+    setAdmin,
+    loading,
+    setLoading,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
