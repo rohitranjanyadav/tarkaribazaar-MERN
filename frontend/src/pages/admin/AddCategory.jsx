@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { AppContext } from "../../context/AppContext";
 import { Upload } from "lucide-react";
 const AddCategory = () => {
-  const { loading, navigate, setLoading } = useContext(AppContext);
+  const { loading, navigate, setLoading, axios } = useContext(AppContext);
   const [formData, setFormData] = useState({ name: "", image: null });
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -22,11 +22,27 @@ const AddCategory = () => {
       setPreview(URL.createObjectURL(selectedFile));
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    navigate("/admin/categories");
-    toast.success("Category added successfully");
+
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/category/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/admin/categories");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="py-12">

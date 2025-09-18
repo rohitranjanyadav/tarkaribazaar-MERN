@@ -11,10 +11,10 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    const product = productsData.find((item) => item._id === parseInt(id));
+    const product = productsData.find((item) => item._id === id);
     setProduct(product);
     setMainImage(product.images[0]);
-  }, []);
+  }, [id, productsData]);
 
   const [mainImage, setMainImage] = useState();
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -33,13 +33,17 @@ const ProductDetails = () => {
             className="w-full max-w-2xl flex justify-center"
             id="thumbnail-container"
           >
-            <img src={mainImage} className="w-1/2 rounded-lg" alt="Thumb 1" />
+            <img
+              src={`http://localhost:4000/uploads/${mainImage}`}
+              className="w-1/2 rounded-lg"
+              alt="Thumb 1"
+            />
           </div>
 
           <div className="grid grid-cols-4 gap-4 w-full max-w-2xl">
             {product?.images.map((img, index) => (
               <img
-                src={img}
+                src={`http://localhost:4000/uploads/${img}`}
                 key={index}
                 onClick={() => setMainImage(img)}
                 className="thumb rounded-lg md:h-24 h-14 object-cover cursor-pointer hover:opacity-80"
@@ -88,7 +92,7 @@ const ProductDetails = () => {
             </motion.button>
           </div>
           <p className="text-secondary text-xl font-semibold my-4">
-            {product?.category}
+            {product?.category.name}
           </p>
           <div className="border border-gray-200 rounded-lg mt-6 p-3">
             <h1 className="w-full bg-secondary text-white py-4 text-2xl font-semibold  border-b-none">

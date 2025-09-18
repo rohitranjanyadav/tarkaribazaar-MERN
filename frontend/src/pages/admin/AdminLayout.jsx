@@ -13,7 +13,7 @@ import {
 import toast from "react-hot-toast";
 
 const AdminLayout = () => {
-  const { setAdmin, navigate } = useContext(AppContext);
+  const { setAdmin, navigate, axios } = useContext(AppContext);
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const menuItems = [
@@ -30,10 +30,19 @@ const AdminLayout = () => {
     }
     return location.pathname === path;
   };
-  const logout = () => {
-    setAdmin(false);
-    navigate("/");
-    toast.success("logout successfull");
+  const logout = async () => {
+    try {
+      const { data } = await axios.get("/api/admin/logout");
+      if (data.success) {
+        toast.success(data.message);
+        setAdmin(false);
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <div className="flex h-screen bg-gray-100">

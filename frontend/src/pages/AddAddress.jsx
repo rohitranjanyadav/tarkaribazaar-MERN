@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
 const AddAddress = () => {
-  const { navigate } = useContext(AppContext);
+  const { navigate, axios, loading, setLoading } = useContext(AppContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,11 +16,22 @@ const AddAddress = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    toast.success("Address added successfully");
-    navigate("/checkout");
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/address/add", formData);
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/checkout");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div
@@ -108,7 +119,7 @@ const AddAddress = () => {
             />
           </div>
           <button className="w-full bg-primary text-white cursor-pointer py-3">
-            Add Address
+            {loading ? "Please wait..." : "Add Address"}
           </button>
         </form>
       </div>

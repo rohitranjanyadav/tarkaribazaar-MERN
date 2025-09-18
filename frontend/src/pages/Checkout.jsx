@@ -1,11 +1,54 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets.js";
 import { AppContext } from "../context/AppContext.jsx";
+import toast from "react-hot-toast";
 const Checkout = () => {
-  const { cart, navigate, currency, getCartTotal } = useContext(AppContext);
+  const { cart, navigate, currency, getCartTotal, axios, user } =
+    useContext(AppContext);
 
-  const [address, setAddress] = useState("USA");
+  const [address, setAddress] = useState([]);
+  const [selectedAddress, setSelectedAddress] = useState(address[0]);
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  console.log("address", address);
+
+  const fetchAddress = async () => {
+    try {
+      const { data } = await axios.get("/api/address/get");
+
+      if (data.success) {
+        setAddress(data.addresses);
+        if (data.addresses.length > 0) {
+          setSelectedAddress(data.addresses[0]._id);
+        }
+      } else {
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    fetchAddress();
+  }, []);
+
+  const placeOrder = async () => {
+    try {
+      const { data } = await axios.post("/api/order/place", {
+        items: cart,
+        address: selectedAddress,
+        totalAmount: getCartTotal(),
+        paymentMethod,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/my-orders");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
   return (
     <div
       className="py-12 bg-[#0B482F]"
@@ -24,7 +67,11 @@ const Checkout = () => {
                 className="w-full flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">
-                  <img src={item.images[0]} alt="" className="w-20 h-20" />
+                  <img
+                    src={`http://localhost:4000/uploads/${item.images[0]}`}
+                    alt=""
+                    className="w-20 h-20"
+                  />
                   <p>{item.name}</p>
                 </div>
                 <p>
@@ -46,11 +93,19 @@ const Checkout = () => {
             <label htmlFor="address">Select Address</label>
             <select
               className="w-full outline-none border border-primary p-2"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              value={selectedAddress}
+              onChange={(e) => setSelectedAddress(e.target.value)}
             >
-              <option className="text-gray-800">USA</option>
-              <option className="text-gray-800">INDIA</option>
+              {address?.map((item) => (
+                <option
+                  className="text-gray-800"
+                  key={item._id}
+                  value={item._id}
+                >
+                  {item.name} - {item.email} - {item.city} - {item.country} -
+                  {item.state} - {item.zipCode}
+                </option>
+              ))}
             </select>
 
             <button
@@ -76,7 +131,11 @@ const Checkout = () => {
               </option>
             </select>
           </div>
-          <button className="bg-primary text-white cursor-pointer px-6 py-2">
+          <button
+            type="submit"
+            onClick={placeOrder}
+            className="bg-primary text-white cursor-pointer px-6 py-2"
+          >
             {paymentMethod === "cod" ? "Place Order" : "Pay Now"}
           </button>
         </div>

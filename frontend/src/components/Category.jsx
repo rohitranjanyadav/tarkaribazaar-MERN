@@ -53,7 +53,11 @@ const Category = () => {
               transition={{ duration: 0.3 }}
               className={`w-[130px] md:w-[150px] h-[170px]  rounded-md ${colors[i]} flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300`}
             >
-              <img src={category.image} alt="" className="w-32 h-32" />
+              <img
+                src={`http://localhost:4000/uploads/${category.image}`}
+                alt=""
+                className="w-32 h-32"
+              />
               <h3 className="text-lg font-semibold text-gray-800">
                 {category.name}
               </h3>

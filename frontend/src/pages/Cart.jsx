@@ -22,7 +22,11 @@ const Cart = () => {
             <div key={item._id}>
               <div className="grid grid-cols-5 items-center mb-4">
                 <div>
-                  <img src={item.images[0]} alt="" className="w-20 h-20" />
+                  <img
+                    src={`http://localhost:4000/uploads/${item.images[0]}`}
+                    alt=""
+                    className="w-20 h-20"
+                  />
                   <p>{item.name}</p>
                 </div>
                 <p>

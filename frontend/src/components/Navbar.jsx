@@ -5,7 +5,8 @@ import { Heart, ShoppingBag } from "lucide-react";
 import { AppContext } from "../context/AppContext.jsx";
 import toast from "react-hot-toast";
 const Navbar = () => {
-  const { navigate, user, setUser, cart, favorite } = useContext(AppContext);
+  const { navigate, user, setUser, cart, favorite, axios } =
+    useContext(AppContext);
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
@@ -15,10 +16,19 @@ const Navbar = () => {
       : "";
   };
 
-  const logout = () => {
-    setUser(null);
-    toast.success("logout successfull");
-    navigate("/");
+  const logout = async () => {
+    try {
+      const { data } = await axios.get("/api/auth/logout");
+      if (data.success) {
+        toast.success(data.message);
+        setUser(false);
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">

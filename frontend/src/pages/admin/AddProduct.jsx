@@ -5,7 +5,8 @@ import { Upload } from "lucide-react";
 import { p } from "motion/react-client";
 Upload;
 const AddProduct = () => {
-  const { loading, navigate, categoriesData } = useContext(AppContext);
+  const { loading, navigate, categoriesData, setLoading, axios } =
+    useContext(AppContext);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,11 +36,37 @@ const AddProduct = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    navigate("/admin/products");
-    toast.success("Product added successfully");
+    const formPayload = new FormData();
+    formPayload.append("name", formData.name);
+    formPayload.append("price", formData.price);
+    formPayload.append("offerPrice", formData.offerPrice);
+    formPayload.append("smallDesc", formData.smallDesc);
+    formPayload.append("longDesc", formData.longDesc);
+    formPayload.append("weight", formData.weight);
+    formPayload.append("category", formData.category);
+    formData.images.forEach((file) => {
+      if (file) {
+        formPayload.append("images", file);
+      }
+    });
+
+    try {
+      const { data } = await axios.post("/api/product/add", formPayload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (data.success) {
+        toast.success(data.message);
+        navigate("/admin/products");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
   return (
     <div className="py-12">

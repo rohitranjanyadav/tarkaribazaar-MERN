@@ -4,19 +4,27 @@ import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AppContext } from "../context/AppContext.jsx";
 const Login = () => {
-  const { navigate, setUser } = useContext(AppContext);
+  const { navigate, setUser, axios } = useContext(AppContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    toast.success("login successfull");
-    setUser(true);
-    navigate("/");
+    try {
+      const { data } = await axios.post("/api/auth/login", formData);
+      if (data.success) {
+        toast.success(data.message);
+        setUser(true);
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <div
