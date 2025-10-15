@@ -11,25 +11,25 @@ const Dashboard = () => {
   useEffect(() => {
     // Fetch products
     axios
-      .get("http://localhost:3000/api/product/all")
+      .get("https://tarkaribazaar-mern.onrender.com/api/product/all")
       .then((res) => setProducts(res.data.products))
       .catch((err) => console.error(err));
 
     // Fetch orders
     axios
-      .get("http://localhost:3000/api/order/all")
+      .get("https://tarkaribazaar-mern.onrender.com/api/order/all")
       .then((res) => setOrders(res.data.orders))
       .catch((err) => console.error(err));
 
     // Fetch users
     axios
-      .get("http://localhost:3000/api/user/total-buyers")
+      .get("https://tarkaribazaar-mern.onrender.com/api/user/total-buyers")
       .then((res) => setUsers(res.data.totalBuyers))
       .catch((err) => console.error(err));
 
       // Fetch revenue
     axios
-      .get("http://localhost:3000/api/order/total-revenue", {
+      .get("https://tarkaribazaar-mern.onrender.com/api/order/total-revenue", {
         withCredentials: true,
       })
       .then((res) => setRevenue(res.data.totalRevenue))
