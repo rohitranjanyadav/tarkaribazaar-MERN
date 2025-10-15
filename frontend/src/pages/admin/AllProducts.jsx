@@ -38,7 +38,7 @@ const AllProducts = () => {
               <div className="grid grid-cols-7 items-center mb-4">
                 <div>
                   <img
-                    src={`http://localhost:3000/uploads/${item.images[0]}`}
+                    src={`https://tarkaribazaar-mern.onrender.com/uploads/${item.images[0]}`}
                     alt=""
                     className="w-20 h-20"
                   />
