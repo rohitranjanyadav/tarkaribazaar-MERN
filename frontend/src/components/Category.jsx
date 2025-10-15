@@ -54,7 +54,7 @@ const Category = () => {
               className={`w-[130px] md:w-[150px] h-[170px]  rounded-md ${colors[i]} flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300`}
             >
               <img
-                src={`http://localhost:4000/uploads/${category.image}`}
+                src={`http://localhost:3000/uploads/${category.image}`}
                 alt=""
                 className="w-32 h-32"
               />

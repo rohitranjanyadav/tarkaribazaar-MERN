@@ -99,3 +99,25 @@ export const updateOrderStatus = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const getTotalRevenue = async (req, res) => {
+  try {
+    const result = await Order.aggregate([
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: "$totalAmount" },
+        },
+      },
+    ]);
+
+    const totalRevenue = result[0]?.totalRevenue || 0;
+    res.json({ success: true, totalRevenue });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to calculate total revenue",
+      error: error.message,
+    });
+  }
+};

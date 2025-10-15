@@ -19,12 +19,33 @@ const Contact = () => {
   return (
     <div className="max-w-6xl mx-auto p-6">
       <div className="grid md:grid-cols-2 gap-10">
+        
+
+        {/* Contact Information */}
+        <div className="bg-gray-50 p-6 rounded-2xl shadow-md">
+          <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
+          <p className="mb-3 text-gray-600">
+           Have questions about our products or services? We’d love to hear from you! Reach out using the form below or via the contact details provided.
+          </p>
+          <ul className="space-y-3 text-gray-700">
+            <li>
+              <strong>📍 Address:</strong> Suryabinayak-8, Bhaktapur, Nepal
+            </li>
+            <li>
+              <strong>📞 Phone:</strong> +977 981-1234567
+            </li>
+            <li>
+              <strong>✉️ Email:</strong> support@tarkaribazaar.com
+            </li>
+          </ul>
+        </div>
         <form
           onSubmit={handleSubmit}
           className="bg-white p-6 rounded-2xl shadow-md"
         >
           <div className="mb-4">
             <label htmlFor="" className="block mb-1 font-medium"></label>
+            <label className="block mb-1 font-medium">Your Name</label>
             <input
               type="text"
               name="name"
@@ -69,26 +90,6 @@ const Contact = () => {
             Send Message
           </button>
         </form>
-
-        {/* Contact Information */}
-        <div className="bg-gray-50 p-6 rounded-2xl shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
-          <p className="mb-3 text-gray-600">
-            Have questions about our products or services? Reach out to us using
-            the form or contact details below.
-          </p>
-          <ul className="space-y-3 text-gray-700">
-            <li>
-              <strong>Address:</strong> 123 Green Street, Lahore, Pakistan
-            </li>
-            <li>
-              <strong>Phone:</strong> +92 300 1234567
-            </li>
-            <li>
-              <strong>Email:</strong> support@example.com
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );

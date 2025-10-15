@@ -7,7 +7,7 @@ import {
   getAllProducts,
 } from "../controllers/product.controller.js";
 const productRouter = express.Router();
-productRouter.post("/add", upload.array("images"), isAdmin, addProduct);
+productRouter.post("/add", isAdmin, upload.array("images"), addProduct);
 productRouter.get("/all", getAllProducts);
 productRouter.delete("/delete/:id", isAdmin, deleteProduct);
 export default productRouter;

@@ -62,7 +62,7 @@ const Orders = () => {
                 {item.address.name}, {item.address.city}, {item.address.state},{" "}
                 {item.address.country} ({item.address.zipCode})
               </p>
-              <p className="font-semibold ml-5">${item.totalAmount}</p>
+              <p className="font-semibold ml-5">Rs. {item.totalAmount}</p>
               <p className="capitalize">{item.paymentMethod}</p>
 
               <select

@@ -25,6 +25,8 @@ import AllProducts from "./pages/admin/AllProducts";
 import Orders from "./pages/admin/Orders";
 import AddProduct from "./pages/admin/AddProduct";
 import AddCategory from "./pages/admin/AddCategory";
+import Esewa from "./components/Esewa";
+import PaymentSuccess from "./pages/PaymentSuccess";
 const App = () => {
   const adminPath = useLocation().pathname.includes("admin");
   const { admin } = useContext(AppContext);
@@ -73,6 +75,9 @@ const App = () => {
               element={admin ? <Orders /> : <AdminLogin />}
             />
           </Route>
+            <Route path="/payment" element={<Esewa/>}/>
+            <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+            <Route path="orders" element={<MyOrder/>}/>
         </Routes>
         {!adminPath && <Footer />}
       </div>

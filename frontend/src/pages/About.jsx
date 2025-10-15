@@ -3,16 +3,35 @@ import Brands from "../components/Brands";
 const About = () => {
   return (
     <div className="py-12">
-      <h1 className="text-3xl font-bold text-center">
-        About Our Farm & Farmers
-      </h1>
+      <h1 className="text-3xl font-bold text-center">About TarkaariBazaar</h1>
       <p className="text-lg mt-4 text-center max-w-4xl mx-auto">
-        Nam mollis odio vitae enim vulputate, eget tempor magna auctor.
-        Phasellus a scelerisque nisl, sit amet suscipit diam. Nulla accumsan
-        sodales venenatis. Aenean commodo porta nibh, et fringilla velit
-        convallis eget. In hac habitasse platea dictumst. Ut efficitur sem nibh,
-        nec molestie sapien finibus eget. In id semper enim. Duis dignissim
-        convallis est, ut finibus nisi tempor maxim
+        Welcome to TarkaariBazaar — Nepal’s own online vegetable marketplace
+        built to bridge the gap between local farmers and everyday consumers.
+        <br />
+        <br />
+        We started TarkaariBazaar with a simple idea: fresh, local produce
+        should be accessible, affordable, and sustainable. Our platform empowers
+        farmers to list and sell their vegetables directly to customers —
+        reducing middlemen, ensuring fair prices, and delivering farm-fresh
+        goodness right to your doorstep.
+        <br />
+        At TarkaariBazaar, we're committed to:
+        <br />
+        🥦 Freshness Guaranteed: We partner directly with local growers to
+        deliver vegetables harvested within hours. - 🌱 Supporting Farmers:
+        Helping small and medium farmers earn fair value for their hard work.
+        <br />
+        <br />
+        🧺 Convenience: Browse, order, and receive your tarkaari without leaving
+        home.
+        <br />
+        <br />
+        ♻️ Sustainability: Promoting local farming and eco-friendly
+        distribution. Together, we’re building a smarter, greener way to shop
+        for vegetables in Nepal — one basket at a time.
+        <br />
+        <br />
+        TarkaariBazaar — Taja Tarkaari, TarkaariBazaar bata.
       </p>
       <div className="flex flex-col md:flex-row items-center justify-center mt-12 bg-black text-white">
         <div>

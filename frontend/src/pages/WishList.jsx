@@ -7,7 +7,7 @@ const WishList = () => {
     useContext(AppContext);
   return (
     <div className="py-12">
-      <h1 className="text-3xl font-bold">My Wishlist</h1>
+      <h1 className="text-3xl font-bold text-center mb-3">My Wishlist</h1>
       <div className="border border-gray-400 max-w-5xl mx-auto p-3">
         <div className="grid grid-cols-3 font-semibold text-gray-700">
           <div>Product</div>
@@ -21,7 +21,7 @@ const WishList = () => {
               <div className="grid grid-cols-3 items-center mb-4">
                 <div>
                   <img
-                    src={`http://localhost:4000/uploads/${item.images[0]}`}
+                    src={`http://localhost:3000/uploads/${item.images[0]}`}
                     alt=""
                     className="w-20 h-20"
                   />

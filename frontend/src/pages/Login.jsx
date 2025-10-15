@@ -31,10 +31,19 @@ const Login = () => {
       className="py-12 h-screen bg-[#0B482F]"
       style={{ backgroundImage: `url(${assets.footer_img})` }}
     >
+      <div className="flex justify-center mb-8">
+        <img
+          src={assets.logo}
+          alt="Logo"
+          className="h-16 cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+      </div>
       <div>
         <h1 className="text-4xl text-white font-bold text-center mb-8 capitalize">
           Login into your account
         </h1>
+
         <form
           onSubmit={submitHandler}
           className="max-w-md mx-auto text-white p-4 border border-white rounded"

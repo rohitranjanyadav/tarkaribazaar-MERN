@@ -10,7 +10,6 @@ const AddAddress = () => {
     city: "",
     country: "",
     zipCode: "",
-    state: "",
   });
 
   const handleChange = (e) => {
@@ -106,18 +105,7 @@ const AddAddress = () => {
               className="w-full outline-none border border-white py-3 p-2 rounded"
             />
           </div>
-          <div className="text-white flex flex-col gap-2 mb-4">
-            <label htmlFor="state">State</label>
-            <input
-              type="text"
-              name="state"
-              onChange={handleChange}
-              value={formData.state}
-              required
-              placeholder="Enter your state"
-              className="w-full outline-none border border-white py-3 p-2 rounded"
-            />
-          </div>
+          
           <button className="w-full bg-primary text-white cursor-pointer py-3">
             {loading ? "Please wait..." : "Add Address"}
           </button>

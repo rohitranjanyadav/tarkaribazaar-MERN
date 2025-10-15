@@ -11,22 +11,22 @@ const Hero = () => {
 
   const slides = [
     {
-      title: "Premium Online Store for fruits & veggies",
+      title: "Fresh Vegetables, Straight from Local Farms 🌱",
       img: assets.hero_img1,
       btn1: "SHOP NOW",
       btn2: "LEARN MORE",
     },
     {
-      title: "Fresh and Organic Groceries Delivered",
+      title: "Taaja Tarkari, TarkariBazaar Bata 🥬",
       img: assets.hero_img2,
       btn1: "ORDER NOW",
-      btn2: "FREE DELIVERY",
+      btn2: "EXPLORE FARMERS",
     },
     {
-      title: "Your Daily Needs at Best Prices",
+      title: "Your Smart Online Vegetable Marketplace 🛒",
       img: assets.hero_img3,
-      btn1: "START SHOPPING",
-      btn2: "SPECIAL DEALS",
+      btn1: "SHOP VEGETABLES",
+      btn2: "LEARN MORE",
     },
   ];
   return (
@@ -39,11 +39,26 @@ const Hero = () => {
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <div
-            className="bg-[#D8E7C7] h-[800px] bg-cover bg-center flex flex-col md:flex-row items-center justify-center gap-4"
+            className="bg-[#779a4f] h-[800px] bg-cover bg-center flex flex-col md:flex-row items-center justify-center gap-4"
             style={{ backgroundImage: `url(${assets.leef_layer_bg})` }}
+
           >
+            <motion.div
+              initial={{ y: 300, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 3,
+                type: "spring",
+                repeat: Infinity,
+                repeatDelay: 2,
+              }}
+              className="mt-10 md:mt-0"
+            >
+              <img src={slide.img} alt="" className=" h-[300px] md:h-[600px]" />
+            </motion.div>
             <div className="flex flex-col items-center">
-              <img src={assets.banner} alt="" />
+              
+              {/* <img src={assets.banner} alt="" /> */}
               <h1 className="max-w-2xl text-3xl md:text-5xl font-extrabold text-center capitalize">
                 {slide.title}
               </h1>
@@ -65,19 +80,6 @@ const Hero = () => {
                 </motion.button>
               </div>
             </div>
-            <motion.div
-              initial={{ y: 300, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 3,
-                type: "spring",
-                repeat: Infinity,
-                repeatDelay: 2,
-              }}
-              className="mt-10 md:mt-0"
-            >
-              <img src={slide.img} alt="" className="h-[300px] md:h-[600px]" />
-            </motion.div>
           </div>
         </SwiperSlide>
       ))}

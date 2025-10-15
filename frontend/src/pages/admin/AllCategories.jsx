@@ -34,7 +34,7 @@ const AllCategories = () => {
               <div className="grid grid-cols-3 items-center mb-4">
                 <div>
                   <img
-                    src={`http://localhost:4000/uploads/${item.image}`}
+                    src={`http://localhost:3000/uploads/${item.image}`}
                     alt=""
                     className="w-20 h-20"
                   />

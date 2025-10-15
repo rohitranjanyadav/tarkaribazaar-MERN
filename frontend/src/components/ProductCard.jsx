@@ -7,13 +7,14 @@ const ProductCard = ({ product }) => {
   const { navigate, currency, addToCart } = useContext(AppContext);
   return (
     <div className="w-[250px] h-[350px] rounded-xl bg-[#FAFAFA] p-[20px] hover:border hover:border-secondary hover:transform hover:scale-105 transition-all ease-in-out duration-300">
-      <p>{product.weight}</p>
+      
       <Link to={`/product/${product._id}`} className="cursor-pointer">
         <img
-          src={`http://localhost:4000/uploads/${product.images[0]}`}
-          alt=""
+          src={`http://localhost:3000/uploads/${product.images[0]}`}
+          alt={product.name}
         />
       </Link>
+      
       <button
         onClick={() => addToCart(product)}
         className="flex items-center justify-center mb-3 w-full py-1 bg-secondary text-white cursor-pointer"
@@ -23,9 +24,9 @@ const ProductCard = ({ product }) => {
       <hr className="w-full" />
       <div>
         <p className="text-secondary text-sm font-normal">
-          {product.category.name}
+          {product.category?.name || "No Category"}
         </p>
-        <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+        <h2 className="text-lg font-semibold text-gray-800">{product?.name || "No Name"}</h2>
       </div>
       <div className="flex items-center gap-4">
         <p className="text-base font-normal line-through text-gray-400">
@@ -37,6 +38,7 @@ const ProductCard = ({ product }) => {
           {product.offerPrice}
         </p>
       </div>
+        <p>{product.weight}</p>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Cart = () => {
     useContext(AppContext);
   return (
     <div className="py-12">
-      <h1 className="text-3xl font-bold">My Cart</h1>
+      <h1 className="text-3xl font-bold text-center mb-3">My Cart</h1>
       <div className="border border-gray-400 max-w-5xl mx-auto p-3">
         <div className="grid grid-cols-5 font-semibold text-gray-700">
           <div>Product</div>
@@ -23,7 +23,7 @@ const Cart = () => {
               <div className="grid grid-cols-5 items-center mb-4">
                 <div>
                   <img
-                    src={`http://localhost:4000/uploads/${item.images[0]}`}
+                    src={`http://localhost:3000/uploads/${item.images[0]}`}
                     alt=""
                     className="w-20 h-20"
                   />

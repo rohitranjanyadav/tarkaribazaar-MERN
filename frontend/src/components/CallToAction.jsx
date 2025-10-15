@@ -10,13 +10,13 @@ const CallToAction = () => {
         >
           <div className="flex flex-col gap-3">
             <h1 className="text-primary text-2xl font-bold uppercase">
-              Healty Organic Fruits
+              Healthy Organic Fruits
             </h1>
             <h2 className="text-2xl font-semibold text-secondary">
               Get 20% Flat Off
             </h2>
             <button className="px-6 py-3 bg-secondary text-white hover:bg-primary transition-all ease-in-out duration-300 cursor-pointer">
-              View all items
+              View all Items
             </button>
           </div>
           <img src={assets.organic_fruits} alt="" className="w-1/2" />
@@ -27,13 +27,13 @@ const CallToAction = () => {
         >
           <div className="flex flex-col gap-3">
             <h1 className="text-primary text-2xl font-bold uppercase">
-              Get 10% Flat Offer on
+              Get 10% Flat Off on
             </h1>
             <h2 className="text-2xl font-semibold text-secondary">
               Fresh Organic Vegetables
             </h2>
             <button className="px-6 py-3 bg-secondary text-white hover:bg-primary transition-all ease-in-out duration-300 cursor-pointer">
-              View all items
+              View all Items
             </button>
           </div>
           <img src={assets.organic_fruits} alt="" className="w-1/2" />

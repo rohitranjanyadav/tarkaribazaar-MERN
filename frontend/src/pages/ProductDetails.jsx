@@ -34,7 +34,7 @@ const ProductDetails = () => {
             id="thumbnail-container"
           >
             <img
-              src={`http://localhost:4000/uploads/${mainImage}`}
+              src={`http://localhost:3000/uploads/${mainImage}`}
               className="w-1/2 rounded-lg"
               alt="Thumb 1"
             />
@@ -43,7 +43,7 @@ const ProductDetails = () => {
           <div className="grid grid-cols-4 gap-4 w-full max-w-2xl">
             {product?.images.map((img, index) => (
               <img
-                src={`http://localhost:4000/uploads/${img}`}
+                src={`http://localhost:3000/uploads/${img}`}
                 key={index}
                 onClick={() => setMainImage(img)}
                 className="thumb rounded-lg md:h-24 h-14 object-cover cursor-pointer hover:opacity-80"

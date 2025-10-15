@@ -4,12 +4,12 @@ import app_store from "./app_store.png";
 import play_store from "./play_store.png";
 import footer_img from "./footer_img.png";
 import fruits_right from "./fruits_right.webp";
-import logo from "./logo.svg";
+import logo from "./logo.png";
 import hero_img1 from "./hero_img1.webp";
 import hero_img2 from "./hero_img2.webp";
 import hero_img3 from "./hero_img3.webp";
 import hero_left_img from "./hero_left_img.webp";
-import leef_layer_bg from "./leef_layer_bg.png";
+import leef_layer_bg from "./leaf_bg.jpg";
 import payment from "./payment.png";
 import pink_bg from "./pink_bg.jpg";
 import vegetables_left from "./vegetables_left.webp";
@@ -236,24 +236,25 @@ export const blogs = [
     _id: 1,
     image: blog_1,
     title: "The Health Benefits of Organic Foods",
-    date: "August 15, 2023",
+    date: "August 15, 2024",
     desc: "Discover the numerous health advantages of incorporating organic foods into your diet. From higher nutrient levels to reduced exposure to pesticides, learn why organic is a better choice for your well-being.",
   },
   {
     _id: 2,
     image: blog_2,
     title: "Top 10 Superfoods You Should Include in Your Diet",
-    date: "September 10, 2023",
+    date: "September 8, 2024",
     desc: "Explore the top 10 superfoods that can boost your health and vitality. From antioxidant-rich berries to nutrient-dense leafy greens, find out how these foods can enhance your diet and overall wellness.",
   },
   {
     _id: 3,
     image: blog_3,
     title: "Sustainable Eating: How to Make Eco-Friendly Food Choices",
-    date: "October 5, 2023",
+    date: "October 2, 2024",
     desc: "Learn how to make sustainable eating choices that benefit both your health and the environment. Discover tips on reducing food waste, choosing local and seasonal produce, and supporting eco-friendly farming practices.",
-  },
+  }
 ];
+
 
 export const myOrders = [
   {
