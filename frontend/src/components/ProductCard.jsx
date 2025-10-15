@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       
       <Link to={`/product/${product._id}`} className="cursor-pointer">
         <img
-          src={`http://localhost:3000/uploads/${product.images[0]}`}
+          src={`https://tarkaribazaar-mern.onrender.com/uploads/${product.images[0]}`}
           alt={product.name}
         />
       </Link>
