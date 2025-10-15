@@ -77,7 +77,7 @@ const Checkout = () => {
               <div key={item._id} className="w-full flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <img
-                    src={`http://localhost:3000/uploads/${item.images[0]}`}
+                    src={`https://tarkaribazaar-mern.onrender.com/uploads/${item.images[0]}`}
                     alt=""
                     className="w-20 h-20"
                   />
